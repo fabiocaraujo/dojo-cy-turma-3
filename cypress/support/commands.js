@@ -69,7 +69,6 @@ Cypress.Commands.add('cadastro', (nome, email, senha, confirmaSenha) => {
   cy.get('[data-test="register-submit"]').click()
 })
 
-
 Cypress.Commands.add('criarPost', (token, texto) => {
   cy.request({
     method: 'POST',
@@ -79,6 +78,24 @@ Cypress.Commands.add('criarPost', (token, texto) => {
       text: texto
     }
   })
+})
+
+Cypress.Commands.add('loginApp', () => {
+  cy.request({
+    method: 'POST',
+    url: 'api/auth',
+    body:
+    {
+      "email": user[0].usuario,
+      "password": user[0].senha
+    }
+  }).then((response) =>{
+      cy.setCookie('location' , 'BR-PR')
+      cy.setCookie('jwt' , response.body.jwt)
+      window.localStorage.setItem('logadoCom', user[0].usuario)
+      window.sessionStorage.setItem('jwt2', response.body.jwt)
+  })
+
 })
 
 

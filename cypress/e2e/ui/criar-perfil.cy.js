@@ -2,11 +2,13 @@
 
 describe('Funcionalidade: Criar perfil', () => {
     beforeEach(() => {
-        cy.login('fabio@teste.com', 'teste@123')
-        //cy.loginApp('fabio@teste.com', 'teste@123')
+        cy.loginApp()
         cy.visit('criar-perfil')
     });
     
+    it.only('Deve visitar a tela sem abrir tela de login', () => {
+        cy.log('Visitou!!!!!!!')
+    });
     it('Deve criar perfil com sucesso', () => {
         cy.get('#mui-component-select-status').click()
         cy.contains('Especialista em QA').click()
