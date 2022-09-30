@@ -26,8 +26,8 @@
 
 Cypress.Commands.add('login', (email, senha) => {
   cy.visit('login')
-  cy.get('[data-test="login-email"] > .MuiInputBase-root > .MuiInputBase-input').type(email)
-  cy.get('[data-test="login-password"] > .MuiInputBase-root > .MuiInputBase-input').type(senha)
+  cy.get('[data-test="login-email"]').type(email)
+  cy.get('[data-test="login-password"]').type(senha)
   cy.get('[data-test="login-submit"]').click()
 })
 
@@ -62,10 +62,10 @@ Cypress.Commands.add('criarPerfil', (status, cia, site, cidade, skills, github, 
 
 Cypress.Commands.add('cadastro', (nome, email, senha, confirmaSenha) => {
   cy.visit('cadastrar')
-  cy.get('[data-test="register-name"] > .MuiInputBase-root > .MuiInputBase-input').type(nome)
-  cy.get('[data-test="register-email"] > .MuiInputBase-root > .MuiInputBase-input').type(email)
-  cy.get('[data-test="register-password"] > .MuiInputBase-root > .MuiInputBase-input').type(senha)
-  cy.get('[data-test="register-password2"] > .MuiInputBase-root > .MuiInputBase-input').type(confirmaSenha)
+  cy.get('[data-test="register-name"]').type(nome)
+  cy.get('[data-test="register-email"]').type(email)
+  cy.get('[data-test="register-password"]').type(senha)
+  cy.get('[data-test="register-password2"]').type(confirmaSenha)
   cy.get('[data-test="register-submit"]').click()
 })
 
